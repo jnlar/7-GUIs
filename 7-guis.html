@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Jonathan Archer, jon357@protonmail.ch">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/main.css">
+	<script>
+		const gid = function(id) { return document.getElementById(id) };
+		const gcn = function(className) { return document.getElementsByClassName(className) };
+		const qsa = function(selector) { return document.querySelectorAll(selector) };
+	</script>
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<title>Jons blog</title>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="7-guis.html">7-GUIs</a></li>
+			<li><a href="stuff.html">Stuff</a></li>
+			<li><a href="about.html">About</a></li>
+		</ul>
+	</nav>
+	<div id="inner-wrapper">
+		<p class='has-bottom-border'>Amet exercitationem soluta odit fuga sunt. Quos quibusdam quidem qui non beatae Beatae repellat ex libero quas error at! Distinctio deserunt cupiditate voluptates perspiciatis ratione. A pariatur saepe harum omnis.</p>
+		<main>
+			<section id="col-1">
+				<span><p><a id="trig-0" href="#">Counter</a></p></span>
+				<span><p><a id="trig-1" href="#">Temperature Converter</a></p></span>
+				<span><p><a id="trig-2" href="#">Flight Booker</a></p></span>
+				<span><p><a id="trig-3" href="#">Timer</a></p></span>
+				<span><p><a id="trig-4" href="#">CRUD</a></p></span>
+				<span><p><a id="trig-5" href="#">Circle Drawer</a></p></span>
+				<span><p><a id="trig-6" href="#">Cells</a></p></span>
+			</section>
+			<div class="col-2" id="col-2-0">
+				<h3>Counter</h3>
+				<p>Amet magnam ea eaque ab porro natus Est repellat facere aliquam voluptas sint, perspiciatis incidunt, distinctio Magnam dolore eveniet dolore odit id Molestiae reiciendis facere dignissimos eum ratione. Mollitia aliquam</p>
+				<div class="gui-block">
+					<input class="inputs" id="counter-input" type="text" readonly>
+					<button class="buttons" id="counter-increment">Count</button>
+					<button class="buttons" id="counter-reset">Reset</button>
+				</div>
+			</div>
+			<div class="col-2" id="col-2-1">
+				<h3>Temperature Converter</h3>
+				<p>Amet magnam ea eaque ab porro natus Est repellat facere aliquam voluptas sint, perspiciatis incidunt, distinctio Magnam dolore eveniet dolore odit id Molestiae reiciendis facere dignissimos eum ratione. Mollitia aliquam</p>
+				<div class="gui-block">
+					<input class="inputs" id="cel-input" type="text">
+					<label for="cel-input">Celsius =</label>
+					<input class="inputs" id="far-input" type="text">
+					<label for="far-input">Fahrenheit</label>
+				</div>
+			</div>
+			<div class="col-2" id="col-2-2">
+				<h3>Flight Booker</h3>
+				<p>Amet magnam ea eaque ab porro natus Est repellat facere aliquam voluptas sint, perspiciatis incidunt, distinctio Magnam dolore eveniet dolore odit id Molestiae reiciendis facere dignissimos eum ratione. Mollitia aliquam</p>
+				<div class="fb-block">
+					<ul>
+						<li><select id="fb-inputs-select" name="flight-booker">
+							<option value="one-way">one-way flight</option>
+							<option value="return">return flight</option></select>
+						</li>
+						<li><input class="inputs-fb" id="fb-dl" type="text" placeholder="yyyy-mm-dd"></li>
+						<li><input class="inputs-fb" id="fb-dr" type="text" placeholder="yyyy-mm-dd"></li>
+						<li><button class="buttons" id="confirm-fb">Book</button></li>
+						<div class="gui-block" id="book-success"></div>
+					</ul>
+				</div>
+			</div>
+			<div class="col-2" id="col-2-3">
+				<h3>Timer</h3>
+				<p>Sit illo laborum porro adipisci repellat. Perferendis sequi soluta ad maxime voluptate Veritatis id veniam reiciendis debitis dolorum Molestiae ducimus quo nihil repellat vel? Similique autem ipsum vitae amet illum.</p>
+				<div class="timer-block">
+					<ul>
+						<li><progress id='time-gauge' value="0" max="100"></progress></li>
+						<li><p id="elapsed"></p></li>
+						<li><input id="time-range" type="range" value="0" min="0" max="100"></li>
+						<li><button class="buttons" id="time-reset">Reset</button></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-2" id="col-2-4">
+				<h3>CRUD</h3>
+				<p>Elit sunt obcaecati totam excepturi veniam eos, ab Voluptatem omnis autem voluptates quo eius. Alias eius illum delectus corrupti repudiandae. Cum molestias modi quo accusantium vel, aut! Eius consequatur sed?</p>
+				<div id="crud-block">
+					<input class="crud-inputs" id="crud-filter" type="text" placeholder="Filter prefix">
+					<div id="crud-list-name">
+						<table id="crud-table">
+						</table>
+						<ul>
+							<li><input class="crud-inputs" id="crud-firstname" type="text" placeholder="Firstname"></li>
+							<li><input class="crud-inputs" id="crud-lastname" type="text" placeholder="Surname"></li>
+						</ul>
+					</div>
+					<button class="buttons" id="crud-create">Create</button>
+					<button class="buttons" id="crud-update">Update</button>
+					<button class="buttons" id="crud-delete">Delete</button>
+				</div>
+			</div>
+			<div class="col-2" id="col-2-5">
+			</div>
+			<div class="col-2" id="col-2-6">
+			</div>
+		</main>
+	</div>
+	<script>
+		const postL = document.querySelectorAll("[id^=trig-]")
+		const post = document.querySelectorAll("[id^=col-2-]");
+
+		for (let i = 0; i < post.length; i++) {
+			post[i].style.display = "none";
+			post[i].style.order = "2";
+			post[i].style.width = "65%";
+		}
+
+		for (let i = 0; i < postL.length; i++) {
+			let x = document.getElementById("col-2-" + parseInt(i));
+
+			postL[i].addEventListener("click", () => {
+
+				for (let i = 0; i < post.length; i++) {
+					if (post[i].style.display == "block") { post[i].style.display = "none" }
+				}
+
+				if (x.style.display === '' || x.style.display === "none") {
+					x.style.display = "block";
+				} else {
+					x.style.display = "none";
+				}
+			});
+		}
+	</script>
+	<script src="js/count.js"></script>
+	<script src="js/temp.js"></script>
+	<script src="js/flight-booker.js"></script>
+	<script src="js/timer.js"></script>
+	<script src="js/crud.js"></script>
+</body>
+</html>

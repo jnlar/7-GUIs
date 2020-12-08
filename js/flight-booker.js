@@ -3,12 +3,10 @@ const fbDateReturn = gid("fb-dr");
 const confirmFb = gid('confirm-fb');
 const fbDl = gid('fb-dl');
 const fbDr = gid('fb-dr');
-//const currentDate = new Date();
 const canBook = gid('book-success');
 
 function inputsColor(n, color) { gcn('inputs-fb')[n].style.backgroundColor = color; }
 function cBlock(value, html) { if (confirmFb.disabled === false && fbSelect.value === value) { canBook.innerHTML += html; } }
-function cConfirm() { gcn('fa-times')[0].addEventListener('click', () => {canBook.style.display = 'none'}) }
 (function inputDefaults() { fbDl.value = ''; fbDr.value = ''; })();
 (function guiDefaults() { 
 	fbSelect.value = 'one-way';

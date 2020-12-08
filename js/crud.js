@@ -1,6 +1,6 @@
 const util = {
 	clearInput: function() {
-		gid('crud-firstname').value = ''; gid('crud-lastname').value = '';
+		gid('crud-firstname').value = ''; gid('crud-lastname').value = ''; gid('crud-filter').value = '';
 	},
 
 	filter: function() {
@@ -79,3 +79,5 @@ const app = {
 }
 
 app.init();
+
+window.onload = util.clearInput;

@@ -90,8 +90,9 @@ const app = {
 				}
 
 				tr[i].classList.add('selected');
-				gid('crud-firstname').value = tr[i].innerText.replace(/,.*/, '');
-				gid('crud-lastname').value = tr[i].innerText.replace(/\b(\w+)\W*/, '');
+				let trText = tr[i].innerText;
+				gid('crud-firstname').value = trText.substr(0, trText.indexOf(','));
+				gid('crud-lastname').value = trText.substr(trText.indexOf(', ') + 2);
 			})
 		}
 	},

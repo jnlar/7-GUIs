@@ -86,7 +86,7 @@ const app = {
 		for (let i = 0; i < tr.length; i++) {
 			tr[i].addEventListener('click', () => {
 				for (let i = 0; i < tr.length; i++) {
-					if (tr[i].classList.contains('selected')) tr[i].classList.remove('selected');
+					if (tr[i].classList.contains('selected')) tr[i].removeAttribute('class');
 				}
 
 				tr[i].classList.add('selected');
@@ -100,14 +100,20 @@ const app = {
 		gid('crud-create').addEventListener('click', () => {
 			let firstName = gid('crud-firstname').value,
 					lastName = gid('crud-lastname').value,
-					row = gid('crud-table').insertRow(0).insertCell(0),
-					key = util.uuid();
+					genKey = util.uuid();
 
+			if (firstName, lastName === '') { console.log('bro..') ; return };
+
+			let row = gid('crud-table').insertRow(0).insertCell(0);
 			row.innerHTML = `${firstName}, ${lastName}`;
-			row.setAttribute('id', key);
-			util.store(key, { first_name: firstName, last_name: lastName });
+			row.setAttribute('id', genKey);
+
+			util.store(genKey, { first_name: firstName, last_name: lastName });
+
 			this.crudSelected();
-			console.log(key, 'added to localStorage');
+			util.clearInput();
+			console.log(genKey, 'added to localStorage');
+			util.filter(); // wont need this if we have a render method
 		})
 	},
 
@@ -120,7 +126,10 @@ const app = {
 			localStorage.setItem(key, JSON.stringify({ first_name: firstName, last_name: lastName }));
 			gcn('selected')[0].children[0].innerHTML = `${firstName}, ${lastName}`;
 			console.log('updated', key, 'in localStorage');
+
 			this.crudSelected();
+			util.clearInput();
+			util.filter();
 		})
 	},
 
@@ -135,6 +144,7 @@ const app = {
 
 			gcn('selected')[0].remove();
 			util.clearInput();
+			util.filter();
 		})
 	},
 

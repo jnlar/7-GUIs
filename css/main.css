@@ -7,7 +7,7 @@
 body {
 	font-family: 'Ubuntu', sans-serif, calibri, monospace;
 	background-color: #fff;
-	font-size: 15px;
+	font-size: 13px;
 	line-height: 20px;
 }
 
@@ -84,29 +84,37 @@ section#col-1 {
 	padding-bottom: 10px;
 }
 
+/* inherited styling for the guis, counter and temp converter
+ * inherit the same styling for inputs and buttons */
 .gui-block {
 	display: inline-block;
 	margin-top: 10px;
-	padding: 10px 10px;
-	border: 1px solid #f8f8f8;
+	border: 1px solid #eee;
 	box-shadow: 0px 5px 3px rgba(0,0,0,0.1)
 }
 
-#book-success {
-	width: 250px;
+.gui-header {
+	display: flex;
+	font-size: 12px;
+	background-color: #bbb;
+}
+
+.gui-container {
+	padding: 20px 10px 10px 10px;
+}
+
+.gui-container li {
+	padding-bottom: 10px;
 }
 
 .buttons {
+	font-family: 'Ubuntu', sans-serif, calibri, monospace;
+	font-size: 13px;
 	padding: 10px 20px;
 	border: none;
 	text-align: center;
 	cursor: pointer;
 	background-color: #e8e8e8;
-}
-
-.fa-times {
-	float: right;
-	cursor: pointer;
 }
 
 .inputs {
@@ -116,9 +124,25 @@ section#col-1 {
 	box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px 0px;
 }
 
+/* top 'header' styling for the gui 'windows' */
+.gui-header p {
+	padding: 0;
+	padding-left: 10px;
+	text-align: center;
+	width: 95%;
+}
+
+.fa-code {
+	padding-right: 3px;
+}
+
+/* flight booker */
 #fb-inputs-select {
-	width: 200px; border: 1px solid #eee;
+	width: 200px; 
+	border: 1px solid #eee;
 	box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px 0px;
+	font-family: 'Ubuntu', sans-serif, calibri, monospace;
+	font-size: 13px;
 }
 
 .inputs-fb {
@@ -134,39 +158,69 @@ section#col-1 {
 	outline: none;
 }
 
-.fb-block {
-	width: 240px;
+#fb-block {
+	width: 250px;
 	float: left;
-	margin-top: 10px;
-	padding: 10px 10px;
-	border: 1px solid #f8f8f8;
-	box-shadow: 0px 5px 3px rgba(0,0,0,0.1)
 }
 
 .fb-block ul li {
 	padding-top: 10px;
 }
 
-.timer-block {
-	width: 260px;
-	display: inline-block;
-	margin-top: 10px;
-	padding: 10px 10px;
-	border: 1px solid #f8f8f8;
+#book-success {
+	width: 270px;
 	box-shadow: 0px 5px 3px rgba(0,0,0,0.1)
 }
 
-#time-gauge {
-	border: 1px solid #f8f8f8;
-	background-color: #fafafa;
-	box-shadow: 0px 5px 3px rgba(0,0,0,0.1)
+#book-success p {
+	padding: 10px;
 }
 
-#crud-block {
-	margin-top: 10px;
-	padding: 10px 10px;
-	border: 1px solid #f8f8f8;
-	box-shadow: 0px 5px 3px rgba(0,0,0,0.1)
+.fa-times {
+	float: right;
+	cursor: pointer;
+	padding: 5px 5px;
+}
+
+/* timer app */
+#timer-block {
+	width: 360px;
+}
+
+progress {
+	width: 335px;
+	-webkit-appearance: none;
+	appearance: none;
+	border: none;
+	background-color: #eee;
+}
+
+/* firefox */
+progress::-moz-progress-bar {
+  background-color: #0366d6;
+}
+
+/* chrome */
+progress::-webkit-progress-value {
+  background-color: #0366d6;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #eee;
+}
+
+#elapsed {
+	text-align: center;
+	padding: 0;
+} 
+
+#time-range {
+	width: 335px;
+}
+
+/* CRUD app */
+#crud-container {
+	width: 390px;
 }
 
 #crud-list-name {
@@ -177,7 +231,6 @@ section#col-1 {
 }
 
 #crud-list-name ul li input {
-	margin-bottom: 10px;
 	margin-left: 20px;
 }
 
@@ -186,6 +239,8 @@ section#col-1 {
 }
 
 .crud-inputs {
+	font-family: 'Ubuntu', sans-serif, calibri, monospace;
+	font-size: 13px;
 	width: 150px;
 	border: 1px solid #eee;
 	box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px 0px;
@@ -201,9 +256,10 @@ section#col-1 {
 }
 
 #crud-table td {
-	width: 219px;
+	width: 197px;
 }
 
+/* about.html 'footer' */
 #contact ul {
 	margin-top: 10px;
 	display: flex;

@@ -1,8 +1,4 @@
 const util = {
-	clearInput: function() {
-		gid('crud-firstname').value = ''; gid('crud-lastname').value = ''; gid('crud-filter').value = '';
-	},
-
 	filter: function() {
 		let input, filter, td, a, txtValue;
 		input = gid('crud-filter');
@@ -22,8 +18,8 @@ const util = {
 	},
 
 	uuid: function() {
-		var i, random;
-		var uuid = '';
+		let i, random;
+		let uuid = '';
 
 		for (i = 0; i < 32; i++) {
 			random = Math.random() * 16 | 0;
@@ -40,30 +36,16 @@ const util = {
 		if (arguments.length > 1) {
 			return localStorage.setItem(namespace, JSON.stringify(data));
 		} else {
-			var store = localStorage.getItem(namespace);
+			let store = localStorage.getItem(namespace);
 			return (store && JSON.parse(store)) || [];
 		}
 	},
-
-	// TODO: 
-	// 1. we are typing the same thing over and over, do less of that...
-	// 2. create bindEvents method, where eventlisteners are declared 
-	// 3. rework crudSelected method
-
-	getSelected: function() { /* return selected so we can repeat less */ },
-
-	nameInput: function(/*id?*/) { /* return inputs.value here */ },
-
-	rowTd: function() { /* shorthand insert td to corresponding row */ },
 }
 
 const app = {
 	init: function() {
 		this.renderLocalStorage();
-		this.crudCreate();
-		this.crudUpdate();
-		this.crudDelete();
-		this.crudFilter();
+		this.bindEvents();
 	},
 
 	renderLocalStorage: function() {
@@ -71,13 +53,44 @@ const app = {
 
 		for (let i = 0; i < localStorage.length; i++) {
 			let row = gid('crud-table').insertRow(0).insertCell(0),
-					nKey = localStorage.getItem(keys[i]);
-					nKeyParse = JSON.parse(nKey);
+					nKey = util.store(keys[i]);
 
 			row.setAttribute('id', keys[i]);
-			row.innerHTML = `${nKeyParse.first_name}, ${nKeyParse.last_name}`;
+			row.innerHTML = `${nKey.first_name}, ${nKey.last_name}`;
 		}
 		this.crudSelected();
+	},
+
+	bindEvents: function() {
+		gid('crud-create').addEventListener('click', this.crudCreate.bind(this));
+		gid('crud-update').addEventListener('click', this.crudUpdate.bind(this));
+		gid('crud-delete').addEventListener('click', this.crudDelete.bind(this));
+		gid('crud-filter').addEventListener('keyup', () => { util.filter(); })
+	},
+
+	noSelect: function() { if (gcn('selected').length === 0) return true },
+
+	clearInput: function() {
+		gid('crud-firstname').value = ''; gid('crud-lastname').value = ''; gid('crud-filter').value = '';
+	},
+
+	crudCreate: function() {
+		let firstName = gid('crud-firstname').value,
+				lastName = gid('crud-lastname').value,
+				genKey = util.uuid();
+
+		if (firstName, lastName === '') return;
+
+		let row = gid('crud-table').insertRow(0).insertCell(0);
+		row.innerHTML = `${firstName}, ${lastName}`;
+		row.setAttribute('id', genKey);
+
+		util.store(genKey, { first_name: firstName, last_name: lastName });
+
+		this.crudSelected();
+		this.clearInput();
+		util.filter();
+		console.log(genKey, 'added to localStorage');
 	},
 
 	crudSelected: function() { 
@@ -97,62 +110,37 @@ const app = {
 		}
 	},
 
-	crudCreate: function() {
-		gid('crud-create').addEventListener('click', () => {
-			let firstName = gid('crud-firstname').value,
-					lastName = gid('crud-lastname').value,
-					genKey = util.uuid();
-
-			if (firstName, lastName === '') { console.log('bro..') ; return };
-
-			let row = gid('crud-table').insertRow(0).insertCell(0);
-			row.innerHTML = `${firstName}, ${lastName}`;
-			row.setAttribute('id', genKey);
-
-			util.store(genKey, { first_name: firstName, last_name: lastName });
-
-			this.crudSelected();
-			util.clearInput();
-			console.log(genKey, 'added to localStorage');
-			util.filter(); // wont need this if we have a render method
-		})
-	},
-
 	crudUpdate: function() {
-		gid('crud-update').addEventListener('click', () => {
-			let key = gcn('selected')[0].children[0].id,
-					firstName = gid('crud-firstname').value,
-					lastName = gid('crud-lastname').value;
+		if (this.noSelect()) return;
 
-			localStorage.setItem(key, JSON.stringify({ first_name: firstName, last_name: lastName }));
-			gcn('selected')[0].children[0].innerHTML = `${firstName}, ${lastName}`;
-			console.log('updated', key, 'in localStorage');
+		let key = gcn('selected')[0].children[0].id,
+				firstName = gid('crud-firstname').value,
+				lastName = gid('crud-lastname').value;
 
-			this.crudSelected();
-			util.clearInput();
-			util.filter();
-		})
+		if (firstName, lastName === '') return;
+
+		util.store(key, { first_name: firstName, last_name: lastName });
+		gcn('selected')[0].children[0].innerHTML = `${firstName}, ${lastName}`;
+		console.log('updated', key, 'in localStorage');
+
+		this.crudSelected();
+		this.clearInput();
+		util.filter();
 	},
 
 	crudDelete: function() {
-		gid('crud-delete').addEventListener('click', () => {
-			let key = gcn('selected')[0].children[0].id
+		if (this.noSelect()) return;
 
-			if (gcn('selected')[0] === undefined) return;
+		let key = gcn('selected')[0].children[0].id;
 
-			localStorage.removeItem(key);
-			console.log(key, "removed from localStorage");
+		localStorage.removeItem(key);
+		console.log(key, "removed from localStorage");
 
-			gcn('selected')[0].remove();
-			util.clearInput();
-			util.filter();
-		})
-	},
-
-	crudFilter: function() {
-		gid('crud-filter').addEventListener('keyup', () => { util.filter(); })
+		gcn('selected')[0].remove();
+		this.clearInput();
+		util.filter();
 	},
 }
 
 app.init();
-window.onload = util.clearInput;
+window.onload = app.clearInput;

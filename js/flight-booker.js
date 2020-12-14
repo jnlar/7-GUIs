@@ -27,9 +27,9 @@ function dateInputValid(id, n) {
 	id.addEventListener('keyup', () => {
 		console.log('confirmFb.disabled is', confirmFb.disabled);
 		let input = id.value;
-		let date = new Date(input);
-		let x = fbDl.value.replace(/-|\s|\./gi, '');
-		let y = fbDr.value.replace(/-|\s|\./gi, '');
+				date = new Date(input),
+				x = fbDl.value.replace(/-|\s|\./gi, ''),
+				y = fbDr.value.replace(/-|\s|\./gi, '');
 
 		if (date <= new Date() || isNaN(Date.parse(date))) {
 			inputsColor(n, '#ff8080');

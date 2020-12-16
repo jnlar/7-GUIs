@@ -8,20 +8,12 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/main.css">
-	<script>
-		const gid = function(id) { return document.getElementById(id) };
-		const gcn = function(className) { return document.getElementsByClassName(className) };
-		const qsa = function(selector) { return document.querySelectorAll(selector) };
-		const gtn = function(tagName) { return document.getElementsByTagName(tagName) };
-	</script>
-	<title>Jons blog</title>
+	<title>7 GUIs</title>
 </head>
 <body>
 	<nav>
 		<ul>
-			<li><a href="index.html">Home</a></li>
 			<li><a href="7-guis.html">7-GUIs</a></li>
-			<li><a href="stuff.html">Stuff</a></li>
 			<li><a href="about.html">About</a></li>
 		</ul>
 	</nav>
@@ -33,7 +25,7 @@
 		<main>
 			<section id="col-1">
 				<ul>
-					<li><span><a id="trig-0" href="#">Counter</a></span></li>
+					<li><span><a id="trig-0" href="#counter">Counter</a></span></li>
 					<li><span><a id="trig-1" href="#">Temperature Converter</a></span></li>
 					<li><span><a id="trig-2" href="#">Flight Booker</a></span></li>
 					<li><span><a id="trig-3" href="#">Timer</a></span></li>
@@ -43,8 +35,6 @@
 				</ul>
 			</section>
 			<div class="col-2" id="col-2-0">
-				<h3>Counter</h3>
-				<p>Amet magnam ea eaque ab porro natus Est repellat facere aliquam voluptas sint, perspiciatis incidunt, distinctio Magnam dolore eveniet dolore odit id Molestiae reiciendis facere dignissimos eum ratione. Mollitia aliquam</p>
 				<div class="gui-block">
 					<div class="gui-header">
 						<p>Counter</p>
@@ -58,8 +48,6 @@
 				</div>
 			</div>
 			<div class="col-2" id="col-2-1">
-				<h3>Temperature Converter</h3>
-				<p>Amet magnam ea eaque ab porro natus Est repellat facere aliquam voluptas sint, perspiciatis incidunt, distinctio Magnam dolore eveniet dolore odit id Molestiae reiciendis facere dignissimos eum ratione. Mollitia aliquam</p>
 				<div class="gui-block">
 					<div class="gui-header">
 						<p>Temp converter</p>
@@ -74,8 +62,6 @@
 				</div>
 			</div>
 			<div class="col-2" id="col-2-2">
-				<h3>Flight Booker</h3>
-				<p>Amet magnam ea eaque ab porro natus Est repellat facere aliquam voluptas sint, perspiciatis incidunt, distinctio Magnam dolore eveniet dolore odit id Molestiae reiciendis facere dignissimos eum ratione. Mollitia aliquam</p>
 				<div class="gui-block">
 					<div class="gui-header">
 						<p>Flight booker</p>
@@ -96,8 +82,6 @@
 				</div>
 			</div>
 			<div class="col-2" id="col-2-3">
-				<h3>Timer</h3>
-				<p>Sit illo laborum porro adipisci repellat. Perferendis sequi soluta ad maxime voluptate Veritatis id veniam reiciendis debitis dolorum Molestiae ducimus quo nihil repellat vel? Similique autem ipsum vitae amet illum.</p>
 				<div id="timer-block" class="gui-block">
 					<div class="gui-header">
 						<p>Timer</p>
@@ -116,8 +100,6 @@
 				</div>
 			</div>
 			<div class="col-2" id="col-2-4">
-				<h3>CRUD</h3>
-				<p>Elit sunt obcaecati totam excepturi veniam eos, ab Voluptatem omnis autem voluptates quo eius. Alias eius illum delectus corrupti repudiandae. Cum molestias modi quo accusantium vel, aut! Eius consequatur sed?</p>
 				<div class="gui-block">
 					<div class="gui-header">
 						<p>CRUD</p>
@@ -140,42 +122,32 @@
 				</div>
 			</div>
 			<div class="col-2" id="col-2-5">
+				<div class="gui-block">
+					<div class="gui-header">
+						<p>Circle drawer</p>
+						<a target="_blank" href="https://github.com/jnlar/7-GUIs/blob/main/js/circle.js"><i class="fa fa-code"></i></a>
+					</div>
+					<div class="gui-container">
+						<div id="circle-buttons">
+							<!--<button class="buttons" id="circle-redo">Redo</button>-->
+							<button class="buttons" id="circle-undo">Undo</button>
+						</div>
+						<canvas id="canvas" width="360" height="300"></canvas>
+					</div>
+				</div>
 			</div>
 			<div class="col-2" id="col-2-6">
 			</div>
 		</main>
 	</div>
-	<script>
-		const postL = document.querySelectorAll("[id^=trig-]")
-		const post = document.querySelectorAll("[id^=col-2-]");
-
-		for (let i = 0; i < post.length; i++) {
-			post[i].style.display = "none";
-			post[i].style.order = "2";
-			post[i].style.width = "65%";
-		}
-
-		for (let i = 0; i < postL.length; i++) {
-			let x = document.getElementById("col-2-" + parseInt(i));
-
-			postL[i].addEventListener("click", () => {
-
-				for (let i = 0; i < post.length; i++) {
-					if (post[i].style.display == "block") { post[i].style.display = "none" }
-				}
-
-				if (x.style.display === '' || x.style.display === "none") {
-					x.style.display = "block";
-				} else {
-					x.style.display = "none";
-				}
-			});
-		}
-	</script>
+	<script src="js/util/funcs.js"></script>
+	<script src="js/util/show-hide.js"></script>
 	<script src="js/count.js"></script>
 	<script src="js/temp.js"></script>
 	<script src="js/flight-booker.js"></script>
 	<script src="js/timer.js"></script>
 	<script src="js/crud.js"></script>
+	<script src="js/circle.js"></script>
+	<!--<script src="js/cells.js"></script>-->
 </body>
 </html>

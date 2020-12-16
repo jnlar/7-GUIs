@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Jonathan Archer, jon357@protonmail.ch">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/main.css">
+	<title>Jons blog</title>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="7-guis.html">7-GUIs</a></li>
+			<li><a href="about.html">About</a></li>
+		</ul>
+	</nav>
+	<div id="inner-wrapper">
+		<main>
+			<section>
+				<h2>Jonathan Archer</h2>
+				<p>Sydney based front end web developer: I'm a noob who's been programming for almost a year now. I like making web pages fast and making programs smaller through refactoring&mdash; simplifying is a challange!</p>
+			</section>
+		</main>
+		<div id="contact">
+			<h3>Contact me!</h3>
+			<ul>
+				<li><a target="_blank" href="https://github.com/jnlar"><i class="fa fa-github" style="font-size:20px;"></i></a></li>
+				<li>-</li>
+				<li><a href="mailto:jon357@protonmail.ch">jon357@protonmail.ch</a></li>
+				<li>-</li>
+				<li><span><a id="cv-click" href="#">Resume</a></span></li>
+			</ul>
+			<br><iframe id="resume" src="images/resume.pdf" width="650" height="600" frameborder="0"></iframe>
+		</div>
+	</div>
+	<script>
+		var resume = document.getElementById("resume");
+		var cvClick = document.getElementById("cv-click");
+		resume.style.display = "none";
+		cvClick.addEventListener("click", () => { resume.style.display == "" || resume.style.display == "none" ? resume.style.display = "block" : resume.style.display = "none"; })
+	</script>
+</body>
+</html>

@@ -45,6 +45,9 @@ function dateInputValid(id, n) {
 	})
 }
 
+dateInputValid(fbDl, 0);
+dateInputValid(fbDr, 1);
+
 (function confirm() {
 	confirmFb.addEventListener('click', () => {
 		let faClose = '<i class="fa fa-times" style="font-size:13px"></i>'
@@ -61,5 +64,3 @@ function dateInputValid(id, n) {
 	})
 })();
 
-dateInputValid(fbDl, 0);
-dateInputValid(fbDr, 1);

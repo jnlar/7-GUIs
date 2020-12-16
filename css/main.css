@@ -6,15 +6,11 @@
 
 body {
 	font-family: 'Ubuntu', sans-serif, calibri, monospace;
-	background-color: #fff;
 	font-size: 13px;
 	line-height: 20px;
 }
 
 #inner-wrapper {
-	display: block;
-	height: 92vh;
-	overflow-y: scroll;
 	max-width: 650px;
 	padding-top: 20px;
 	padding-left: 40px;
@@ -54,7 +50,7 @@ nav ul li {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	padding-right: 10px;
-	font-size: 16px;
+	font-size: 15px;
 }
 
 header p {
@@ -62,22 +58,22 @@ header p {
 }
 
 main {
-	display: flex;
 	margin-right: 10px;
 	padding-top: 10px;
 }
 
-section#col-1 {
-	order: 1;
-	position: sticky;
-	top: 0;
-	border-right: 1px solid #eee;
-	width: 30%;
-	height: 100%;
+section#col-1 ul {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
 }
 
 .col-2 {
-	padding-left: 15px;
+	padding-top: 10px;
 }
 
 .col-2 h3 {
@@ -160,7 +156,7 @@ section#col-1 {
 }
 
 #fb-block {
-	width: 250px;
+	width: 200px;
 	float: left;
 }
 
@@ -169,7 +165,7 @@ section#col-1 {
 }
 
 #book-success {
-	width: 270px;
+	width: 235px;
 	box-shadow: 0px 5px 3px rgba(0,0,0,0.1)
 }
 
@@ -257,6 +253,18 @@ progress::-webkit-progress-bar {
 
 #crud-table td {
 	width: 197px;
+}
+
+/* Circle drawer */
+#canvas {
+	border: 1px solid #eee;
+}
+
+#circle-buttons {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	padding-bottom: 10px;
 }
 
 /* about.html 'footer' */

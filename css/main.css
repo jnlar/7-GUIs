@@ -258,7 +258,12 @@ progress::-webkit-progress-bar {
 
 /* Circle drawer */
 #canvas {
+	display: flex;
 	border: 1px solid #eee;
+	width: 360px;
+	height: 300px;
+	flex: 1 1 0%;
+	position: relative;
 }
 
 #circle-buttons {

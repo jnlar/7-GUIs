@@ -1,12 +1,12 @@
 const postL = qsa("[id^=trig-]");
-const post = qsa("[id^=col-2-]");
+const post = qsa("[id^=gui-]");
 
 for (let i = 0; i < post.length; i++) {
 	post[i].style.display = "none";
 }
 
 for (let i = 0; i < postL.length; i++) {
-	let x = gid("col-2-" + parseInt(i));
+	let x = gid("gui-" + parseInt(i));
 
 	postL[i].addEventListener("click", () => {
 

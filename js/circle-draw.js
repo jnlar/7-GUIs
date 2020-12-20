@@ -1,3 +1,8 @@
+// TODO:
+// 1. disable redo button when historyPosition equals state.length - 1
+// 2. change diameter on circle click event, clicking on a circle should display a popup box
+// with a gauge you can drag to instantly change the diameter of selected circle
+
 const canvas = gid('canvas')
 const state = []
 var historyPosition = 0
@@ -8,6 +13,12 @@ const circle = {
 		this.bindEvents()
 		this.canRedo()
 		this.canUndo()
+	},
+
+	postStatement: function() {
+		this.canRedo()
+		this.canUndo()
+		this.circleMouseEvents()
 	},
 
 	bindEvents: function() {
@@ -53,9 +64,7 @@ const circle = {
 		historyPosition += 1
 		x = 0
 
-		this.canRedo()
-		this.canUndo()
-		this.circleMouseEvents()
+		this.postStatement()
 		console.log(`we are at position ${historyPosition} in the state`)
 	},
 
@@ -81,8 +90,7 @@ const circle = {
 		x += 1
 
 		console.log('we are at position', historyPosition, 'in the state', state[historyPosition])
-		this.canRedo()
-		this.canUndo()
+		this.postStatement()
 	},
 
 	redo: function() {
@@ -99,6 +107,7 @@ const circle = {
 		x -= 1
 
 		this.canUndo()
+		this.circleMouseEvents()
 	},
 
 	circleMouseEvents: function() {

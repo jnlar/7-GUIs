@@ -53,6 +53,10 @@ const circle = {
 
 		console.log('state =', state, historyPosition)
 		historyPosition += 1
+
+		if (newCircle.id !== history[history.length - 2].key) {
+			console.log(newCircle.id, history[history.length - 2].key)
+		}
 	},
 
 	undo: function() {
@@ -65,7 +69,6 @@ const circle = {
 
 		canvas.lastChild.remove()
 		historyPosition -= 1
-
 		console.log('history =', history, historyPosition)
 	},
 
@@ -75,7 +78,7 @@ const circle = {
 		this.createCircle(redoCircle, state[undoPos].x, state[undoPos].y)
 
 		historyPosition += 1
-		console.log(historyPosition, 'is the history position')
+		console.log(`${historyPosition} is the history position`)
 	},
 
 	changeDiameter: function() {

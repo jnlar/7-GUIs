@@ -46,7 +46,7 @@ const circle = {
 		let pos = this.mousePos(canvas, e),
 			posx = pos.x,
 			posy = pos.y,
-			newCircle = this.createCircleDiv(util.uuid())
+			newCircle = this.createCircleDiv(uuid())
 
 		this.createCircle(newCircle, posx, posy)
 		state.push(this.circleState(newCircle.id, posx, posy, newCircle.style.width))

@@ -63,4 +63,3 @@ dateInputValid(fbDr, 1);
 		gcn('fa-times')[0].addEventListener('click', () => {canBook.style.display = 'none'})
 	})
 })();
-

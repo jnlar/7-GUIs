@@ -1,2 +1,2 @@
 # 7-GUIs
-A benchmark to fundamental GUI programming challenges
+[7-GUIs](https://eugenkiss.github.io/7guis/tasks), A benchmark to fundamental GUI programming challenges

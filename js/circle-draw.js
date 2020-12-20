@@ -1,15 +1,13 @@
-//TODO: 
-// 1.command pattern implementation
-// 2.better state handling, see: https://medium.com/fbbd/intro-to-writing-undo-redo-systems-in-javascript-af17148a852b
-
 const canvas = gid('canvas')
 const state = []
-const history = []
 var historyPosition = 0
+var x;
 
 const circle = {
 	init: function() {
 		this.bindEvents()
+		this.canRedo()
+		this.canUndo()
 	},
 
 	bindEvents: function() {
@@ -18,11 +16,15 @@ const circle = {
 		gid('circle-redo').addEventListener('click', this.redo.bind(this))
 	},
 
+	circleState: function(key, x, y, di) {
+		return {key, x, y, di}
+	},
+
 	createCircle: function(circle, x, y) {
 			circle.style.borderRadius = '100%'
 			circle.style.width = '30px'
 			circle.style.height = '30px'
-			circle.style.border = '1px solid #0366d6'
+			circle.style.border = '1px solid #999'
 			circle.style.transform = 'translate(-50%, -50%)'
 			circle.style.position = 'absolute'
 			circle.style.left = `${x}px`
@@ -33,13 +35,10 @@ const circle = {
 		let newCircle = document.createElement('div')
 
 		newCircle.setAttribute('id', id)
+		newCircle.setAttribute('class', 'circles')
 		canvas.append(newCircle)
 
 		return newCircle
-	},
-
-	circleState: function(key, x, y, di) {
-		return {key, x, y, di}
 	},
 
 	draw: function(e) {
@@ -51,37 +50,69 @@ const circle = {
 		this.createCircle(newCircle, posx, posy)
 		state.push(this.circleState(newCircle.id, posx, posy, newCircle.style.width))
 
-		console.log('state =', state, historyPosition)
 		historyPosition += 1
+		x = 0
 
-		if (newCircle.id !== history[history.length - 2].key) {
-			console.log(newCircle.id, history[history.length - 2].key)
+		this.canRedo()
+		this.canUndo()
+		this.circleMouseEvents()
+		console.log(`we are at position ${historyPosition} in the state`)
+	},
+
+	canRedo: function() {
+		if (x > 0) {
+			gid('circle-redo').disabled = false
+		} else {
+			gid('circle-redo').disabled = true
+		}
+	},
+
+	canUndo: function() {
+		if (state.length, historyPosition === 0) {
+			gid('circle-undo').disabled = true
+		} else {
+			gid('circle-undo').disabled = false
 		}
 	},
 
 	undo: function() {
-		history.push(this.circleState(
-			state[historyPosition - 1].key,
-			state[historyPosition - 1].x,
-			state[historyPosition - 1].y,
-			state[historyPosition - 1].di
-		))
-
 		canvas.lastChild.remove()
 		historyPosition -= 1
-		console.log('history =', history, historyPosition)
+		x += 1
+
+		console.log('we are at position', historyPosition, 'in the state', state[historyPosition])
+		this.canRedo()
+		this.canUndo()
 	},
 
 	redo: function() {
-		let undoPos = historyPosition, redoCircle = this.createCircleDiv(state[undoPos].key)
+		let redoCircle = this.createCircleDiv(state[historyPosition].key)
 
-		this.createCircle(redoCircle, state[undoPos].x, state[undoPos].y)
+		this.createCircle(
+			redoCircle,
+			state[historyPosition].x,
+			state[historyPosition].y,
+			state[historyPosition].di)
 
+		console.log('we are at position', historyPosition, 'in the state', state[historyPosition])
 		historyPosition += 1
-		console.log(`${historyPosition} is the history position`)
+		x -= 1
+
+		this.canUndo()
 	},
 
-	changeDiameter: function() {
+	circleMouseEvents: function() {
+		qsa('.circles').forEach(el => {
+			el.addEventListener('mouseover', () => {
+				el.style.backgroundColor = "#eee"
+			})
+		})
+
+		qsa('.circles').forEach(el => {
+			el.addEventListener('mouseout', () => {
+				el.style.backgroundColor = "#fff"
+			})
+		})
 	},
 
 	mousePos: function(canvas, event) {

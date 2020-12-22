@@ -1,23 +1,23 @@
-const postL = qsa("[id^=trig-]");
-const post = qsa("[id^=gui-]");
+const trigAnchor = qsa('[id^=trig-]'), gui = qsa('[id^=gui-]')
 
-for (let i = 0; i < post.length; i++) {
-	post[i].style.display = "none";
+for (let i = 0; i < gui.length; i++) {
+	if (i === 0) { gui[i].style.display = 'block'; continue }
+	gui[i].style.display = 'none'
 }
 
-for (let i = 0; i < postL.length; i++) {
-	let x = gid("gui-" + parseInt(i));
+for (let i = 0; i < trigAnchor.length; i++) {
+	let selectedGui = gid('gui-' + parseInt(i));
 
-	postL[i].addEventListener("click", () => {
+	trigAnchor[i].addEventListener('click', () => {
 
-		for (let i = 0; i < post.length; i++) {
-			if (post[i].style.display == "block") { post[i].style.display = "none" }
+		for (let i = 0; i < trigAnchor.length; i++) {
+			if (gui[i].style.display == 'block') gui[i].style.display = 'none'
+			if (trigAnchor[i].classList.contains('sl-nav-active')) trigAnchor[i].removeAttribute('class')
 		}
 
-		if (x.style.display === '' || x.style.display === "none") {
-			x.style.display = "block";
-		} else {
-			x.style.display = "none";
-		}
+		trigAnchor[i].setAttribute('class', 'sl-nav-active')
+
+		if (selectedGui.style.display === 'none') selectedGui.style.display = 'block'
+		else selectedGui.style.display = 'none'
 	});
 }

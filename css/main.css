@@ -13,19 +13,11 @@ body {
 }
 
 #inner-wrapper {
+	margin: auto;
 	max-width: 650px;
+	min-width: 465px;
 	padding-top: 20px;
-	padding-left: 40px;
-	padding-right: 40px;
 	background-color: #fff;
-}
-
-h2 {
-	padding-bottom: 10px;
-}
-
-p {
-	padding-bottom: 10px;
 }
 
 a {
@@ -33,45 +25,69 @@ a {
 	color: #0366d6;
 }
 
-a:hover {
+header a:hover,
+#contact a:hover {
 	text-decoration: underline;
 }
 
+p,
+h2 {
+	padding-bottom: 10px;
+}
+
+.active {
+	background-color: #eee;
+}
+
 nav {
-	position: relative;
-	box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 6px 0px;
-	padding-left: 40px;
-	background-color: #fff;
+	margin-bottom: 30px;
 }
 
 nav ul {
 	display: flex;
 }
 
-nav ul li {
-	margin-top: 10px;
-	margin-bottom: 10px;
-	padding-right: 10px;
-	font-size: 15px;
+nav ul li a:hover {
+	background-color: #eee;
 }
 
-header p {
-	padding-bottom: 10px;
+nav ul li a {
+	padding: 10px 10px;
+	margin-right: 10px;
+	font-size: 15px;
+	background-color: #f7f7f7;
 }
 
 main {
-	margin-right: 10px;
 	padding-top: 10px;
 }
 
 section#sl-nav ul {
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
-	padding-bottom: 10px;
-	padding-top: 10px;
-	border-bottom: 2px solid #E7E7E7;
-	border-top: 2px solid #E7E7E7;
+	justify-content: space-between;
+	padding-bottom: 7px;
+	padding-top: 7px;
+	border-bottom: 2px solid #e7e7e7;
+	border-top: 2px solid #e7e7e7;
+}
+
+section#sl-nav li {
+	padding: 10px 10px;
+	color: #0366d6;
+}
+
+
+section#sl-nav li:hover {
+	cursor: pointer;
+	background-color: #1a75ff;
+	color: #fff !important;
+	box-shadow: 1px 5px 3px rgba(0,0,0,0.1);
+}
+
+.sl-nav-active {
+	background-color: #1a75ff !important;
+	color: #fff !important;
 }
 
 .gui {
@@ -84,7 +100,7 @@ section#sl-nav ul {
 	display: inline-block;
 	margin-top: 10px;
 	border: 1px solid #eee;
-	box-shadow: 0px 5px 3px rgba(0,0,0,0.1);
+	box-shadow: 1px 5px 3px rgba(0,0,0,0.1);
 	background-color: #fff;
 }
 
@@ -95,11 +111,7 @@ section#sl-nav ul {
 }
 
 .gui-container {
-	padding: 20px 10px 10px 10px;
-}
-
-.gui-container li {
-	padding-bottom: 10px;
+	padding: 10px 10px 10px 10px;
 }
 
 .buttons {
@@ -154,6 +166,10 @@ section#sl-nav ul {
 	outline: none;
 }
 
+#confirm-li {
+	padding-top: 10px;
+}
+
 #fb-block {
 	width: 200px;
 	float: left;
@@ -169,6 +185,7 @@ section#sl-nav ul {
 }
 
 #book-success p {
+	margin-top: 10px;
 	padding: 10px;
 }
 
@@ -230,15 +247,24 @@ progress::-webkit-progress-bar {
 }
 
 .selected {
-	background-color: #66b3ff;
+	background-color: #3385ff;
+}
+
+.selected td {
+	color: #fff;
 }
 
 .crud-inputs {
 	font-family: 'Ubuntu', sans-serif, calibri, monospace;
-	font-size: 13px;
+	font-size: 0.9rem;
 	width: 150px;
+	height: 20px;
 	border: 1px solid #eee;
 	box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px 0px;
+}
+
+#crud-firstname {
+	margin-bottom: 10px;
 }
 
 #crud-table {
@@ -265,9 +291,7 @@ progress::-webkit-progress-bar {
 }
 
 #circle-buttons {
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
+	text-align: center;
 	padding-bottom: 10px;
 }
 

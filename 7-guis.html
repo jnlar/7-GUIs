@@ -11,25 +11,27 @@
 	<title>7 GUIs</title>
 </head>
 <body>
+	<div id="inner-wrapper">
 	<nav>
 		<ul>
-			<li><a href="7-guis.html">7-GUIs</a></li>
+			<li><a class="active" href="7-guis.html">7-GUIs</a></li>
 			<li><a href="about.html">About</a></li>
 		</ul>
 	</nav>
-	<div id="inner-wrapper">
 		<header>
+			<h2>7-GUIs implementation in Vanilla JavaScript</h2>
+			<p>Ipsum repellat rem autem corrupti velit Tenetur at corrupti cum fuga ut Ex alias beatae maiores nobis non. Libero minima officiis vitae magni beatae Quod est inventore deleniti fugiat beatae!</p>
 		</header>
 		<main>
 			<section id="sl-nav">
 				<ul>
-					<li><span><a id="trig-0" href="#counter">Counter</a></span></li>
-					<li><span><a id="trig-1" href="#">Temperature Converter</a></span></li>
-					<li><span><a id="trig-2" href="#">Flight Booker</a></span></li>
-					<li><span><a id="trig-3" href="#">Timer</a></span></li>
-					<li><span><a id="trig-4" href="#">CRUD</a></span></li>
-					<li><span><a id="trig-5" href="#">Circle Drawer</a></span></li>
-					<li><span><a id="trig-6" href="#">Cells</a></span></li>
+					<li class="sl-nav-active" id="trig-0">Counter</li>
+					<li id="trig-1">Temperature Converter</li>
+					<li id="trig-2">Flight Booker</li>
+					<li id="trig-3">Timer</li>
+					<li id="trig-4">CRUD</li>
+					<li id="trig-5">Circle Drawer</li>
+					<li id="trig-6">Cells</li>
 				</ul>
 			</section>
 			<div class="gui" id="gui-0">
@@ -73,7 +75,7 @@
 							</li>
 							<li><input class="inputs-fb" id="fb-dl" type="text" placeholder="yyyy-mm-dd"></li>
 							<li><input class="inputs-fb" id="fb-dr" type="text" placeholder="yyyy-mm-dd"></li>
-							<li><button class="buttons" id="confirm-fb">Book</button></li>
+							<li id="confirm-li"><button class="buttons" id="confirm-fb">Book</button></li>
 							<div id="book-success"></div>
 						</ul>
 					</div>
@@ -131,6 +133,8 @@
 							<button class="buttons" id="circle-undo">Undo</button>
 						</div>
 						<div id="canvas">
+						</div>
+						<div class="gui-block" id="di-box">
 						</div>
 					</div>
 				</div>

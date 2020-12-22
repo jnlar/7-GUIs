@@ -85,7 +85,11 @@ const circle = {
 	},
 
 	undo: function() {
+		if (state[historyPosition - 1].di !== canvas.lastChild.style.width) {
+		}
+
 		canvas.lastChild.remove()
+
 		historyPosition -= 1
 		x += 1
 
@@ -119,9 +123,25 @@ const circle = {
 
 		qsa('.circles').forEach(el => {
 			el.addEventListener('mouseout', () => {
-				el.style.backgroundColor = "#fff"
+				el.style.backgroundColor = "rgba(0, 0, 0, 0)"
 			})
 		})
+
+		qsa('.circles').forEach(el => {
+			el.addEventListener('click', (e) => {
+				if (!e) var e = window.event
+				e.cancelBubble = true
+				if (e.stopPropagation) e.stopPropagation();
+
+				el.style.width = "50px"
+				el.style.height = "50px"
+			})
+		})
+	},
+
+	diBox: function() {
+		gid('di-box').style.display = 'block'
+
 	},
 
 	mousePos: function(canvas, event) {
@@ -135,3 +155,4 @@ const circle = {
 }
 
 circle.init();
+window.onload = () => { gid('di-box').style.display = 'none' }

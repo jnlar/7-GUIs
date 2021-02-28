@@ -1,7 +1,7 @@
 // TODO:
-// 1. disable redo button when historyPosition equals state.length - 1
-// 2. change diameter on circle click event, clicking on a circle should display a popup box
-// with a gauge you can drag to instantly change the diameter of selected circle
+// 1. changing circle diameter changing doesn't look like it's going to intergrate with 
+// current undo/redo design. Looks like we are going to have to rewrite most of the program.
+// 1.1 implement command pattern? current state based history undo/redo looks like more complex work.
 
 const canvas = gid('canvas')
 const state = []
@@ -85,9 +85,6 @@ const circle = {
 	},
 
 	undo: function() {
-		if (state[historyPosition - 1].di !== canvas.lastChild.style.width) {
-		}
-
 		canvas.lastChild.remove()
 
 		historyPosition -= 1
@@ -141,7 +138,6 @@ const circle = {
 
 	diBox: function() {
 		gid('di-box').style.display = 'block'
-
 	},
 
 	mousePos: function(canvas, event) {
